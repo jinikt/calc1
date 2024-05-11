@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>공학용 계산기</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #calculator {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+  }
+  input[type="text"], button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+</head>
+<body>
+<div id="calculator">
+  <input type="text" id="display" readonly>
+  <button onclick="clearDisplay()">C</button>
+  <button onclick="inputValue('1')">1</button>
+  <button onclick="inputValue('2')">2</button>
+  <button onclick="inputValue('3')">3</button>
+  <button onclick="inputValue('+')">+</button>
+  <button onclick="inputValue('4')">4</button>
+  <button onclick="inputValue('5')">5</button>
+  <button onclick="inputValue('6')">6</button>
+  <button onclick="inputValue('-')">-</button>
+  <button onclick="inputValue('7')">7</button>
+  <button onclick="inputValue('8')">8</button>
+  <button onclick="inputValue('9')">9</button>
+  <button onclick="inputValue('*')">*</button>
+  <button onclick="inputValue('0')">0</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="inputValue('/')">/</button>
+  <button onclick="inputValue('Math.sqrt(')">√</button>
+</div>
+
+<script>
+  function inputValue(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    try {
+      let result = eval(document.getElementById('display').value);
+      document.getElementById('display').value = result;
+    } catch (error) {
+      document.getElementById('display').value = 'Error';
+    }
+  }
+</script>
+</body>
+</html>
